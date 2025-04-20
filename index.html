@@ -386,6 +386,83 @@
                 background-image: url('images/parchment-bg.jpg');
             }
         }
+
+        .revolut-qr {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .revolut-qr img {
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+
+        .revolut-link {
+            display: inline-block;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-top: 10px;
+            padding: 8px 16px;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition-normal);
+        }
+
+        .revolut-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .fab.fa-revolut {
+            margin-right: 8px;
+        }
+
+        .bank-details {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--primary-color);
+        }
+
+        .bank-info {
+            margin-bottom: 15px;
+        }
+
+        .bank-info p {
+            margin: 8px 0;
+            color: var(--text-color);
+        }
+
+        .bank-info strong {
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+
+        .copy-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            transition: var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .copy-btn i {
+            font-size: 1.1em;
+        }
     </style>
 </head>
 <body>
@@ -589,14 +666,34 @@
                     <div class="donation-icon">💳</div>
                     <h3>Revolut</h3>
                     <p>Бързо и лесно дарение чрез Revolut</p>
-                    <button class="donate-btn">Дарете с Revolut</button>
+                    <button class="donate-btn" id="revolut-donate">
+                        <i class="fab fa-revolut"></i> Дарете с Revolut
+                    </button>
+                    <div class="revolut-qr" style="display: none;">
+                        <img src="images/revolut-qr.png" alt="Revolut QR код">
+                        <p>Сканирайте QR кода или използвайте:</p>
+                        <a href="https://revolut.me/pvidev" target="_blank" class="revolut-link">revolut.me/pvidev</a>
+                    </div>
                 </div>
 
                 <div class="donation-card">
                     <div class="donation-icon">🏦</div>
                     <h3>Банков превод</h3>
                     <p>Традиционен банков превод</p>
-                    <button class="donate-btn">Банкова информация</button>
+                    <button class="donate-btn" id="bank-details">
+                        <i class="fas fa-university"></i> Банкова информация
+                    </button>
+                    <div class="bank-details" style="display: none;">
+                        <div class="bank-info">
+                            <p><strong>Име:</strong> Пейо Видев</p>
+                            <p><strong>IBAN:</strong> BG84STSA93000029682809</p>
+                            <p><strong>SWIFT:</strong> STSABGSF</p>
+                            <p><strong>Банка:</strong> ДСК</p>
+                        </div>
+                        <button class="copy-btn" data-copy="BG84STSA93000029682809">
+                            <i class="fas fa-copy"></i> Копирай IBAN
+                        </button>
+                    </div>
                 </div>
 
                 <div class="donation-card">
