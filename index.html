@@ -45,7 +45,7 @@
             left: 0;
             right: 0;
             height: 20px;
-            background-image: url('images/ornament-top.png');
+            background-image: url('images/ornament-top.webp');
             background-repeat: repeat-x;
         }
 
@@ -56,7 +56,7 @@
             left: 0;
             right: 0;
             height: 20px;
-            background-image: url('images/ornament-top.png');
+            background-image: url('images/ornament-top.webp');
             background-repeat: repeat-x;
             transform: rotate(180deg);
         }
@@ -91,6 +91,9 @@
             transition: var(--transition-normal);
             position: relative;
             overflow: hidden;
+            background-image: url('images/parchment-bg.webp');
+            background-size: cover;
+            background-position: center;
         }
 
         .feature-card::before {
@@ -331,6 +334,57 @@
             margin-bottom: 30px;
             padding-bottom: 15px;
             border-bottom: 2px solid var(--accent-color);
+        }
+
+        /* Оптимизация на изображенията */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Стилове за ornament-top */
+        .hero::before,
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background-image: url('images/ornament-top.webp');
+            background-repeat: repeat-x;
+        }
+
+        /* Стилове за header-pattern */
+        .header-content {
+            background-image: url('images/header-pattern.webp');
+            background-repeat: repeat;
+            background-size: 200px;
+        }
+
+        /* Поддръжка на стари браузъри */
+        @supports not (background-image: url('images/ornament-top.webp')) {
+            .hero::before,
+            .hero::after {
+                background-image: url('images/ornament-top.png');
+            }
+        }
+
+        @supports not (background-image: url('images/header-pattern.webp')) {
+            .header-content {
+                background-image: url('images/header-pattern.png');
+            }
+        }
+
+        @supports not (background-image: url('images/parchment-bg.webp')) {
+            .feature-card {
+                background-image: url('images/parchment-bg.jpg');
+            }
         }
     </style>
 </head>
