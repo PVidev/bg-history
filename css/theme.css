@@ -65,6 +65,7 @@
     /* Навигация */
     --nav-height: 70px;
     --nav-padding: var(--spacing-md);
+    --logo-height: 90px;
 }
 
 /* Основни стилове */
@@ -259,6 +260,8 @@ footer::before {
         --font-size-4xl: 2rem;
         --font-size-3xl: 1.75rem;
         --spacing-2xl: 2.5rem;
+        --nav-height: 60px;
+        --logo-height: 80px;
     }
 }
 
@@ -270,7 +273,8 @@ footer::before {
         --font-size-3xl: 1.5rem;
         --font-size-2xl: 1.25rem;
         --spacing-2xl: 2rem;
-        --nav-height: 60px;
+        --nav-height: 50px;
+        --logo-height: 70px;
     }
 }
 
