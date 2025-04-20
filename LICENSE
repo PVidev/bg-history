@@ -1,21 +1,83 @@
-MIT License
+MIT License with Additional Restrictions
+================================================================================
 
-Copyright (c) 2025 Peyo Videv
+ENGLISH VERSION
+--------------
+
+Copyright (c) 2025 БГ-История (BG-History)
+Author: Peyo Videv
+Website: https://pvidev-design.com
+Repository: https://github.com/PVidev/bg-history
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+in the Software ONLY under the following strict conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. Usage Restrictions:
+   - The software may be used for educational and personal non-commercial purposes only
+   - Commercial use is strictly prohibited without explicit written permission
+   - Derivative works must maintain all copyright notices and attributions
+   - Any public use must prominently credit the original author and project
+
+2. Prohibited Actions:
+   - Selling or monetizing the Software or any part of it
+   - Removing or modifying copyright notices and attributions
+   - Using the Software's design, concepts, or code in commercial projects
+   - Creating competing products or services
+   - Redistributing the Software without explicit permission
+
+3. Required Attributions:
+   - Author: Peyo Videv
+   - Project: БГ-История (BG-History)
+   - Website: https://pvidev-design.com
+   - Repository: https://github.com/PVidev/bg-history
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+IMPLIED. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY.
+
+For permissions and inquiries:
+Contact: peyo.videv@gmail.com
+
+================================================================================
+
+БЪЛГАРСКА ВЕРСИЯ
+---------------
+
+Copyright (c) 2025 БГ-История
+Автор: Пейо Видев
+Уебсайт: https://pvidev-design.com
+Хранилище: https://github.com/PVidev/bg-history
+
+Разрешение се предоставя безплатно на всяко лице, получило копие
+на този софтуер и свързаните с него документационни файлове ("Софтуерът"),
+да работи със Софтуера САМО при следните строги условия:
+
+1. Ограничения за използване:
+   - Софтуерът може да се използва само за образователни и лични нетърговски цели
+   - Търговското използване е строго забранено без изрично писмено разрешение
+   - Производните работи трябва да запазват всички бележки за авторско право и атрибуции
+   - Всяко публично използване трябва задължително да посочва оригиналния автор и проект
+
+2. Забранени действия:
+   - Продажба или монетизиране на Софтуера или която и да е част от него
+   - Премахване или модифициране на бележките за авторско право и атрибуциите
+   - Използване на дизайна, концепциите или кода на Софтуера в търговски проекти
+   - Създаване на конкурентни продукти или услуги
+   - Разпространение на Софтуера без изрично разрешение
+
+3. Задължителни атрибуции:
+   - Автор: Пейо Видев
+   - Проект: БГ-История
+   - Уебсайт: https://pvidev-design.com
+   - Хранилище: https://github.com/PVidev/bg-history
+
+СОФТУЕРЪТ СЕ ПРЕДОСТАВЯ "КАКТО Е", БЕЗ ГАРАНЦИЯ ОТ КАКЪВТО И ДА Е ВИД,
+ИЗРИЧНА ИЛИ ПОДРАЗБИРАЩА СЕ. ПРИ НИКАКВИ ОБСТОЯТЕЛСТВА АВТОРИТЕ ИЛИ
+НОСИТЕЛИТЕ НА АВТОРСКИ ПРАВА НЕ НОСЯТ ОТГОВОРНОСТ ЗА КАКВИТО И ДА Е
+ПРЕТЕНЦИИ, ЩЕТИ ИЛИ ДРУГА ОТГОВОРНОСТ.
+
+За разрешения и запитвания:
+Контакт: peyo.videv@gmail.com
+
+================================================================================ 
