@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Историческа викторина - България през вековете</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #A0522D;
+            --accent-color: #DAA520;
+            --text-color: #2F4F4F;
+            --light-bg: #F5F5DC;
+            --success-color: #228B22;
+            --error-color: #8B0000;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            background-image: url('images/parchment-bg.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            border-bottom: 3px solid var(--accent-color);
+            background-image: url('images/header-pattern.png');
+            background-repeat: repeat;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .header-content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background-image: url('images/ornament-top.png');
+            background-repeat: repeat-x;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        main {
+            padding: 40px 0;
+            position: relative;
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background-image: url('images/ornament-top.png');
+            background-repeat: repeat-x;
+            transform: rotate(180deg);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid var(--accent-color);
+            border-radius: var(--border-radius-lg);
+            pointer-events: none;
+        }
+
+        .quiz-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .quiz-intro p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            font-style: italic;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-color);
+        }
+
+        .question {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--text-color);
+            font-weight: 500;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+
+        .option {
+            padding: 15px 20px;
+            background-color: var(--light-bg);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: var(--transition-normal);
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: var(--transition-normal);
+        }
+
+        .option:hover::before {
+            transform: translateX(100%);
+        }
+
+        .option:hover {
+            background-color: #E6D5B8;
+            transform: translateY(-2px);
+        }
+
+        .option.selected {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border-color: var(--accent-color);
+        }
+
+        .option.correct {
+            background-color: var(--success-color);
+            color: white;
+            border-color: #006400;
+        }
+
+        .option.wrong {
+            background-color: var(--error-color);
+            color: white;
+            border-color: #8B0000;
+        }
+
+        .quiz-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background-color: var(--primary-color);
+            color: #FFD700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .results {
+            display: none;
+            text-align: center;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .score {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .progress-bar {
+            height: 25px;
+            background-color: #E6D5B8;
+            border-radius: var(--border-radius-lg);
+            margin: 25px 0;
+            overflow: hidden;
+            border: 2px solid var(--primary-color);
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--success-color);
+            transition: var(--transition-normal);
+            background-image: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent);
+            background-size: 20px 20px;
+        }
+
+        .feedback {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: var(--border-radius-md);
+            background-color: var(--light-bg);
+            font-size: 1.1rem;
+            border: 1px solid var(--primary-color);
+            font-style: italic;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: #FFD700;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 3px solid var(--accent-color);
+            background-image: url('images/header-pattern.png');
+            background-repeat: repeat;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background-image: url('images/ornament-top.png');
+            background-repeat: repeat-x;
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .quiz-container {
+                padding: 20px;
+            }
+
+            .question {
+                font-size: 1.1rem;
+            }
+
+            .option {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.svg" alt="Историческа карта на България">
+            </a>
+            <button class="mobile-menu-btn" aria-label="Отвори меню" aria-expanded="false" aria-controls="main-nav">
+                ☰
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="map.html">Карта</a></li>
+                    <li><a href="timeline.html">Хронология</a></li>
+                    <li><a href="gallery.html">Галерия</a></li>
+                    <li><a href="quiz.html" class="active">Викторина</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Историческа викторина - България през вековете</h1>
+        
+        <div class="quiz-intro" id="quizIntro">
+            <p>Проверете знанията си за историческите места в България!</p>
+            <button class="btn btn-primary" onclick="startQuiz()">Започни викторината</button>
+        </div>
+
+        <div class="quiz-container" id="quizContainer">
+            <div class="question-container">
+                <div class="question" id="question"></div>
+                <div class="options" id="options"></div>
+            </div>
+
+            <div class="quiz-controls">
+                <button class="btn btn-primary" onclick="previousQuestion()" id="prevBtn">Предишен въпрос</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn">Следващ въпрос</button>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <h2>Резултати</h2>
+            <div class="score" id="score"></div>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+            <div class="feedback" id="feedback"></div>
+            <button class="btn btn-primary" onclick="restartQuiz()">Опитай отново</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 БГ История. Всички права запазени. Изработено от <a href="https://pvidev-design.com/" target="_blank">PVidev Design</a></p>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: "Кой град е бил първата столица на Първата българска държава?",
+                options: ["Плиска", "Преслав", "Търново", "София"],
+                correct: 0,
+                explanation: "Плиска е първата столица на България, основана от хан Аспарух през 681 г."
+            },
+            {
+                question: "През кой век е създаден Мадарският конник?",
+                options: ["6-ти век", "7-ми век", "8-ми век", "9-ти век"],
+                correct: 2,
+                explanation: "Мадарският конник е създаден през 8-ми век и е уникален скален релеф."
+            },
+            {
+                question: "Кое от следните места е включено в Списъка на световното културно наследство на ЮНЕСКО?",
+                options: ["Крепост Царевец", "Тракийска гробница в Казанлък", "Крепост Баба Вида", "Преславска книжовна школа"],
+                correct: 1,
+                explanation: "Тракийската гробница в Казанлък е включена в Списъка на ЮНЕСКО заради уникалните си стенописи."
+            },
+            {
+                question: "Кой град е бил столица на Втората българска държава?",
+                options: ["Плиска", "Преслав", "Търново", "София"],
+                correct: 2,
+                explanation: "Търново (днес Велико Търново) е било столица на Втората българска държава от 1185 до 1393 г."
+            },
+            {
+                question: "Кое историческо място е свързано с Априлското въстание от 1876 г.?",
+                options: ["Копривщица", "Плиска", "Преслав", "Царевец"],
+                correct: 0,
+                explanation: "В Копривщица е дадено началото на Априлското въстание с изстрела на Георги Тихов."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answers = new Array(questions.length).fill(null);
+        let questionAnswered = false;
+
+        function startQuiz() {
+            document.getElementById('quizIntro').style.display = 'none';
+            document.getElementById('quizContainer').classList.add('active');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            document.getElementById('question').textContent = q.question;
+            
+            const optionsHtml = q.options.map((option, index) => `
+                <div class="option ${answers[currentQuestion] === index ? 'selected' : ''}" 
+                     onclick="selectOption(${index})">
+                    ${option}
+                </div>
+            `).join('');
+            
+            document.getElementById('options').innerHTML = optionsHtml;
+            updateNavButtons();
+        }
+
+        function selectOption(index) {
+            if (questionAnswered) return;
+            
+            answers[currentQuestion] = index;
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[index].classList.add('selected');
+
+            // Показваме правилния отговор
+            questionAnswered = true;
+            const correct = questions[currentQuestion].correct;
+            
+            setTimeout(() => {
+                options[correct].classList.add('correct');
+                if (index !== correct) {
+                    options[index].classList.add('wrong');
+                }
+                
+                // Показваме обяснението
+                const feedback = document.createElement('div');
+                feedback.className = 'feedback';
+                feedback.textContent = questions[currentQuestion].explanation;
+                document.querySelector('.question-container').appendChild(feedback);
+            }, 500);
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                questionAnswered = false;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                questionAnswered = false;
+                showQuestion();
+            }
+        }
+
+        function updateNavButtons() {
+            document.getElementById('prevBtn').style.display = currentQuestion === 0 ? 'none' : 'block';
+            document.getElementById('nextBtn').textContent = 
+                currentQuestion === questions.length - 1 ? 'Завърши' : 'Следващ въпрос';
+        }
+
+        function showResults() {
+            score = answers.reduce((sum, answer, index) => 
+                sum + (answer === questions[index].correct ? 1 : 0), 0);
+            
+            const percentage = (score / questions.length) * 100;
+            
+            document.getElementById('quizContainer').classList.remove('active');
+            document.getElementById('results').classList.add('active');
+            document.getElementById('score').textContent = 
+                `Верни отговори: ${score} от ${questions.length} (${percentage}%)`;
+            document.getElementById('progressBar').style.width = `${percentage}%`;
+            
+            let feedback = '';
+            if (percentage === 100) {
+                feedback = 'Отлично! Вие сте експерт по българска история!';
+            } else if (percentage >= 80) {
+                feedback = 'Много добре! Имате солидни познания за историческите места в България!';
+            } else if (percentage >= 60) {
+                feedback = 'Добре! Но има още какво да научите за българската история.';
+            } else {
+                feedback = 'Опитайте отново! Посетете историческите места, за да научите повече за тях.';
+            }
+            document.getElementById('feedback').textContent = feedback;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answers = new Array(questions.length).fill(null);
+            questionAnswered = false;
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('quizContainer').classList.add('active');
+            showQuestion();
+        }
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детайли за локация - История на България</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="История на България">
+            </a>
+            <button class="mobile-menu-btn" aria-label="Отвори меню" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="timeline.html">Хронология</a></li>
+                    <li><a href="map.html">Карта</a></li>
+                    <li><a href="gallery.html">Галерия</a></li>
+                    <li><a href="quiz.html">Викторина</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="location-details">
+            <a href="map.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Назад към картата
+            </a>
+
+            <div class="location-header">
+                <h1 class="location-name"></h1>
+                <div class="location-period"></div>
+            </div>
+
+            <div class="location-description"></div>
+
+            <section class="events-section">
+                <h2>Важни събития</h2>
+                <div class="events-container"></div>
+            </section>
+
+            <section class="gallery-section">
+                <h2>Галерия</h2>
+                <div class="image-grid"></div>
+            </section>
+
+            <div class="error-message" style="display: none;">
+                <h2>Грешка при зареждане</h2>
+                <p>Възникна проблем при зареждането на информацията. Моля, опитайте отново по-късно.</p>
+                <a href="map.html" class="back-link">Върнете се към картата</a>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal">
+        <button class="close-modal" aria-label="Затвори">×</button>
+        <img src="" alt="">
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 История на България. Всички права запазени.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/location-details.js"></script>
+</body>
+</html> 

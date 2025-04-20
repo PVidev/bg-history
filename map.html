@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Историческа карта на България - Интерактивна карта</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        .map-container {
+            position: relative;
+            height: 600px;
+            margin: 40px 0;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--primary-color);
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        .location-info {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-color);
+            margin-top: 20px;
+        }
+
+        .location-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .location-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .location-info p {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .location-info img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-md);
+            margin: 15px 0;
+            border: 1px solid var(--primary-color);
+        }
+
+        .filter-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .filter-container h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius-sm);
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+
+        .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .map-container {
+                height: 400px;
+            }
+
+            .filter-options {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.svg" alt="Историческа карта на България">
+            </a>
+            <button class="mobile-menu-btn" aria-label="Отвори меню" aria-expanded="false" aria-controls="main-nav">
+                ☰
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="map.html" class="active">Карта</a></li>
+                    <li><a href="timeline.html">Хронология</a></li>
+                    <li><a href="gallery.html">Галерия</a></li>
+                    <li><a href="quiz.html">Викторина</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Интерактивна карта на историческите места</h1>
+        
+        <div class="filter-container">
+            <h3>Филтриране по период</h3>
+            <div class="filter-options">
+                <button class="filter-btn active" data-period="all">Всички</button>
+                <button class="filter-btn" data-period="ancient">Античност</button>
+                <button class="filter-btn" data-period="medieval">Средновековие</button>
+                <button class="filter-btn" data-period="renaissance">Възраждане</button>
+                <button class="filter-btn" data-period="modern">Съвременност</button>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <div id="map"></div>
+            <div id="map-controls" class="map-controls">
+                <div id="period-controls"></div>
+                <div id="search-controls">
+                    <input type="text" id="search-input" placeholder="Търсене на място...">
+                    <button id="search-button">Търси</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="location-info" id="locationInfo">
+            <h3>Изберете място от картата</h3>
+            <p>Кликнете върху маркер на картата, за да видите подробна информация за историческото място.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 БГ История. Всички права запазени. Изработено от <a href="https://pvidev-design.com/" target="_blank">PVidev Design</a></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="map.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

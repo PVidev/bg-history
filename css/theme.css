@@ -1,0 +1,286 @@
+:root {
+    /* Основни цветове */
+    --primary-color: #8B4513;    /* Кафяв - като пергамент */
+    --secondary-color: #A0522D;  /* Тъмно кафяв */
+    --accent-color: #DAA520;     /* Златист */
+    --text-color: #2F4F4F;       /* Тъмно синьо-зелен */
+    --light-bg: #F5F5DC;         /* Бежов - като стар пергамент */
+    
+    /* Допълнителни цветове */
+    --success-color: #228B22;    /* Тъмно зелено */
+    --error-color: #8B0000;      /* Тъмно червено */
+    --warning-color: #FFA500;    /* Оранжево */
+    --info-color: #1E90FF;       /* Светло синьо */
+    
+    /* Текстови цветове */
+    --text-light: #FFD700;       /* Златист за светъл фон */
+    --text-dark: #2F4F4F;        /* Тъмно синьо-зелен за светъл фон */
+    
+    /* Градиенти */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --gradient-accent: linear-gradient(135deg, var(--accent-color), #FFD700);
+    
+    /* Сенки */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.2);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.3);
+    
+    /* Граници */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    
+    /* Размери */
+    --header-height: 60px;
+    --footer-height: 50px;
+    --container-width: 1200px;
+    
+    /* Анимации */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Типография */
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-base: 1rem;     /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.25rem;    /* 20px */
+    --font-size-2xl: 1.5rem;    /* 24px */
+    --font-size-3xl: 1.875rem;  /* 30px */
+    --font-size-4xl: 2.25rem;   /* 36px */
+
+    /* Отстояния */
+    --spacing-xs: 0.25rem;      /* 4px */
+    --spacing-sm: 0.5rem;       /* 8px */
+    --spacing-md: 1rem;         /* 16px */
+    --spacing-lg: 1.5rem;       /* 24px */
+    --spacing-xl: 2rem;         /* 32px */
+    --spacing-2xl: 3rem;        /* 48px */
+
+    /* Контейнер */
+    --container-max-width: 1200px;
+    --container-padding: var(--spacing-md);
+
+    /* Навигация */
+    --nav-height: 70px;
+    --nav-padding: var(--spacing-md);
+}
+
+/* Основни стилове */
+body {
+    font-family: 'Times New Roman', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/parchment-bg.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Контейнер */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Хедър */
+header {
+    background-color: var(--primary-color);
+    padding: 15px 0;
+    box-shadow: var(--shadow-md);
+    border-bottom: 3px solid var(--accent-color);
+    background-image: url('../images/header-pattern.png');
+    background-repeat: repeat;
+    position: relative;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.header-content::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-image: url('../images/ornament-top.png');
+    background-repeat: repeat-x;
+}
+
+/* Навигация */
+nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: var(--transition-normal);
+    padding: 5px 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: var(--transition-normal);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a.active {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+/* Лого */
+.logo img {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+}
+
+/* Заглавия */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+h1::after, h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+}
+
+/* Бутони */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition-normal);
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    transition: var(--transition-normal);
+}
+
+.btn:hover::before {
+    transform: translateX(100%);
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Футър */
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 3px solid var(--accent-color);
+    background-image: url('../images/header-pattern.png');
+    background-repeat: repeat;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-image: url('../images/ornament-top.png');
+    background-repeat: repeat-x;
+    transform: rotate(180deg);
+}
+
+/* Отзивчив дизайн */
+@media (max-width: 1200px) {
+    :root {
+        --container-max-width: 960px;
+    }
+}
+
+@media (max-width: 992px) {
+    :root {
+        --container-max-width: 720px;
+        --font-size-4xl: 2rem;
+        --font-size-3xl: 1.75rem;
+        --spacing-2xl: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --container-max-width: 540px;
+        --container-padding: var(--spacing-sm);
+        --font-size-4xl: 1.875rem;
+        --font-size-3xl: 1.5rem;
+        --font-size-2xl: 1.25rem;
+        --spacing-2xl: 2rem;
+        --nav-height: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --container-padding: var(--spacing-xs);
+        --font-size-4xl: 1.75rem;
+        --font-size-3xl: 1.375rem;
+        --font-size-2xl: 1.125rem;
+        --spacing-2xl: 1.5rem;
+        --nav-height: 50px;
+    }
+} 

@@ -1,0 +1,891 @@
+/* Основни стилове за body */
+body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Header и навигация */
+header {
+    background: var(--primary-color);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--nav-height);
+    padding: var(--nav-padding) 0;
+    position: relative;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+}
+
+.logo img {
+    height: calc(var(--nav-height) - 20px);
+    transition: var(--transition-normal);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    z-index: 1001;
+}
+
+nav {
+    position: relative;
+    z-index: 1;
+}
+
+nav ul {
+    display: flex;
+    gap: var(--spacing-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-normal);
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+nav a.active {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Основни компоненти */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--accent-color);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: var(--border-radius-md);
+    transition: var(--transition-normal);
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Feature Cards Grid */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl) 0;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-normal);
+}
+
+/* Отзивчив дизайн */
+@media (max-width: 992px) {
+    nav ul {
+        gap: var(--spacing-md);
+    }
+
+    nav a {
+        font-size: var(--font-size-sm);
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+        position: relative;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    nav.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    nav ul {
+        flex-direction: column;
+        background: var(--primary-color);
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-lg);
+        width: 90%;
+        max-width: 300px;
+        gap: var(--spacing-sm);
+        position: relative;
+        z-index: 1001;
+        margin: auto;
+    }
+
+    nav a {
+        display: block;
+        text-align: center;
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-lg);
+        width: 100%;
+    }
+
+    nav a:hover {
+        background: var(--secondary-color);
+    }
+
+    nav a.active {
+        background: var(--accent-color);
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+
+    .container {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: var(--spacing-lg) 0;
+    }
+
+    .feature-card {
+        padding: var(--spacing-md);
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: var(--spacing-xs) auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo img {
+        height: calc(var(--nav-height) - 15px);
+    }
+
+    .header-content {
+        padding: var(--spacing-xs) 0;
+    }
+
+    nav ul {
+        width: 100%;
+        padding: var(--spacing-sm);
+    }
+
+    nav a {
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-base);
+    }
+
+    .feature-card {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+nav.active ul {
+    animation: slideIn 0.3s ease forwards;
+}
+
+/* Стилове за мобилно меню */
+body.menu-open {
+    overflow: hidden;
+}
+
+.scroll-header {
+    background: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Основни медия заявки */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
+        padding: 0 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .feature-card, 
+    .timeline-event, 
+    .gallery-item,
+    .quiz-container,
+    .filter-container {
+        margin-bottom: 20px;
+        padding: 15px;
+    }
+
+    .filter-options {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filter-btn {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .timeline-container::before {
+        left: 20px;
+    }
+
+    .timeline-event {
+        width: calc(100% - 40px);
+        margin-left: 40px;
+    }
+
+    .quiz-container {
+        padding: 15px;
+    }
+
+    .question {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .logo img {
+        height: calc(var(--nav-height) - 25px);
+    }
+
+    .feature-card {
+        padding: var(--spacing-sm);
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .filter-container {
+        padding: 10px;
+    }
+
+    .filter-btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+footer {
+    background: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-md) 0;
+    margin-top: auto;
+}
+
+footer p {
+    text-align: center;
+    color: var(--text-light);
+}
+
+footer a {
+    color: inherit;
+    text-decoration: underline;
+    transition: var(--transition-normal);
+}
+
+footer a:hover {
+    opacity: 0.8;
+}
+
+/* Стилове за галерията */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.artifact-card {
+    background: white;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+.artifact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.artifact-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.artifact-info {
+    padding: 20px;
+}
+
+.artifact-info h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.view-details {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.view-details:hover {
+    background: var(--primary-color);
+}
+
+/* Модален прозорец */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    margin: 50px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    border-radius: var(--border-radius-lg);
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+}
+
+.modal-info {
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Стилове за панела с детайлна информация */
+.location-details {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.location-details h2 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+}
+
+.location-details .period {
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.location-details .description {
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Стилове за секцията със събития */
+.events {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.events h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.event {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.event:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.event .date {
+    color: var(--accent-color);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.event h4 {
+    margin: 0.5rem 0;
+    color: var(--primary-color);
+}
+
+/* Стилове за галерията */
+.gallery {
+    margin: 2rem 0;
+}
+
+.gallery h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.image-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* Модален прозорец за изображения */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+}
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.modal-content button {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Бутон за затваряне */
+.close-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+    margin-top: 2rem;
+}
+
+.close-btn:hover {
+    background: var(--accent-color);
+}
+
+/* Адаптивен дизайн */
+@media (max-width: 768px) {
+    .location-details {
+        padding: 1rem;
+        margin: 1rem;
+    }
+    
+    .location-details h2 {
+        font-size: 1.5rem;
+    }
+    
+    .image-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .image-grid img {
+        height: 150px;
+    }
+}
+
+/* Стилове за детайлен изглед на локация */
+.location-details {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.location-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.location-name {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.location-period {
+    font-size: 1.2rem;
+    color: var(--text-color-light);
+    margin-bottom: 1rem;
+}
+
+.location-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+.events-section {
+    margin-bottom: 3rem;
+}
+
+.events-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.event-card {
+    background: var(--bg-color-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.gallery-section {
+    margin-bottom: 3rem;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover {
+    transform: scale(1.02);
+}
+
+.image-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover .image-caption {
+    transform: translateY(0);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    text-align: center;
+    padding: 2rem;
+}
+
+.error-message h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Медия заявки за детайлен изглед */
+@media (max-width: 768px) {
+    .location-name {
+        font-size: 2rem;
+    }
+
+    .events-container {
+        grid-template-columns: 1fr;
+    }
+
+    .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .modal {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .location-name {
+        font-size: 1.8rem;
+    }
+
+    .location-period {
+        font-size: 1.1rem;
+    }
+
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+} 

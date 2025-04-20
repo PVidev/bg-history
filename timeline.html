@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Историческа карта на България - Хронология</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <style>
+        .timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .period-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin: 30px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-color);
+            position: relative;
+            z-index: 1;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .timeline-event {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-color);
+            position: relative;
+            width: 45%;
+            margin-bottom: 30px;
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .timeline-event::after {
+            content: '';
+            position: absolute;
+            width: 20%;
+            height: 2px;
+            background-color: var(--primary-color);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-event:nth-child(odd) {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .timeline-event:nth-child(even) {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .timeline-event:nth-child(odd)::before {
+            right: -60px;
+        }
+
+        .timeline-event:nth-child(even)::before {
+            left: -60px;
+        }
+
+        .timeline-event:nth-child(odd)::after {
+            right: -20%;
+        }
+
+        .timeline-event:nth-child(even)::after {
+            left: -20%;
+        }
+
+        .event-year {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .event-content h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .event-content p {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .filter-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .filter-container h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius-sm);
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+
+        .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 31px;
+            }
+
+            .period-title {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .timeline-event {
+                width: calc(100% - 70px);
+                margin-left: 70px !important;
+                margin-right: 0 !important;
+            }
+
+            .timeline-event::before {
+                left: -45px !important;
+            }
+
+            .timeline-event::after {
+                left: -45px !important;
+                width: 40px !important;
+            }
+
+            .filter-options {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.svg" alt="Историческа карта на България">
+            </a>
+            <button class="mobile-menu-btn" aria-label="Отвори меню" aria-expanded="false" aria-controls="main-nav">
+                ☰
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="map.html">Карта</a></li>
+                    <li><a href="timeline.html" class="active">Хронология</a></li>
+                    <li><a href="gallery.html">Галерия</a></li>
+                    <li><a href="quiz.html">Викторина</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Хронология на българската история</h1>
+        
+        <div class="filter-container">
+            <h3>Филтриране по период</h3>
+            <div class="filter-options">
+                <button class="filter-btn active" data-period="all">Всички периоди</button>
+                <button class="filter-btn" data-period="first-empire">Първо българско царство</button>
+                <button class="filter-btn" data-period="second-empire">Второ българско царство</button>
+                <button class="filter-btn" data-period="ottoman">Османско владичество</button>
+                <button class="filter-btn" data-period="modern">Съвременна България</button>
+            </div>
+        </div>
+
+        <div class="filter-container">
+            <h3>Филтриране по тип събитие</h3>
+            <div class="filter-options">
+                <button class="filter-btn active" data-type="all">Всички типове</button>
+                <button class="filter-btn" data-type="political">Политически събития</button>
+                <button class="filter-btn" data-type="cultural">Културни събития</button>
+                <button class="filter-btn" data-type="battle">Битки</button>
+            </div>
+        </div>
+
+        <div class="timeline-container">
+            <!-- Тук ще се генерират събитията динамично -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 БГ История. Всички права запазени. Изработено от <a href="https://pvidev-design.com/" target="_blank">PVidev Design</a></p>
+    </footer>
+
+    <script src="js/timeline.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

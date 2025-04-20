@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Историческа карта на България</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <style>
+        .hero {
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background-image: url('images/ornament-top.png');
+            background-repeat: repeat-x;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background-image: url('images/ornament-top.png');
+            background-repeat: repeat-x;
+            transform: rotate(180deg);
+        }
+
+        .hero h1 {
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-color);
+            transition: var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: var(--transition-normal);
+        }
+
+        .feature-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .feature-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .feature-card p {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .cta {
+            text-align: center;
+            margin: 60px 0;
+            padding: 60px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--primary-color);
+        }
+
+        .cta h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .cta p {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+
+        .coming-soon {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: var(--border-radius-sm);
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .coming-soon::before {
+            content: '🔜';
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 20px;
+            }
+
+            .cta {
+                padding: 40px 20px;
+            }
+        }
+
+        .donations {
+            text-align: center;
+            padding: 60px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius-lg);
+            margin: 60px 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--primary-color);
+        }
+
+        .donations h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .donations p {
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+        }
+
+        .donation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 30px;
+        }
+
+        .donation-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-color);
+            transition: var(--transition-normal);
+        }
+
+        .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .donation-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .donation-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .donation-card p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .donate-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            transition: var(--transition-normal);
+            font-size: 1rem;
+        }
+
+        .donate-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .donation-cards {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+
+            .donations {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.svg" alt="Историческа карта на България">
+            </a>
+            <button class="mobile-menu-btn" aria-label="Отвори меню" aria-expanded="false" aria-controls="main-nav">
+                ☰
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Начало</a></li>
+                    <li><a href="map.html">Карта</a></li>
+                    <li><a href="timeline.html">Хронология</a></li>
+                    <li><a href="gallery.html">Галерия</a></li>
+                    <li><a href="quiz.html">Викторина</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Открийте историята на България</h1>
+            <p>Интерактивно пътешествие през вековете на българската история - от създаването на държавата през 681 г. до наши дни. Разгледайте значимите исторически събития, места и личности, които са оформили нашата история.</p>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3>Българско богатство</h3>
+                <p>Открийте историята на българските съкровища и тяхното културно значение.</p>
+                <ul class="feature-list">
+                    <li>Хронология на откритията</li>
+                    <li>Описание на артефактите</li>
+                    <li>Исторически контекст</li>
+                    <li>Местонахождение и музеи</li>
+                </ul>
+                <div class="coming-soon">Очаквайте скоро</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Български творци и художници</h3>
+                <p>Опознайте живота и творчеството на българските творци през вековете.</p>
+                <ul class="feature-list">
+                    <li>Художници и живописци</li>
+                    <li>Скулптори и приложници</li>
+                    <li>Иконописци и зографи</li>
+                    <li>Съвременни артисти</li>
+                </ul>
+                <div class="coming-soon">Очаквайте скоро</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👑</div>
+                <h3>Велики личности</h3>
+                <p>Опознайте бележитите личности, оставили своя отпечатък в българската история.</p>
+                <ul class="feature-list">
+                    <li>Биографии на владетели и държавници</li>
+                    <li>Военачалници и пълководци</li>
+                    <li>Културни и просветни дейци</li>
+                    <li>Революционери и борци за свобода</li>
+                </ul>
+                <div class="coming-soon">Очаквайте скоро</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💭</div>
+                <h3>Велики цитати</h3>
+                <p>Открийте вдъхновяващите думи на велики български личности, оставили своя отпечатък в историята.</p>
+                <ul class="feature-list">
+                    <li>Цитати на владетели</li>
+                    <li>Думи на революционерите</li>
+                    <li>Мисли на творци</li>
+                    <li>Исторически речи</li>
+                </ul>
+                <div class="coming-soon">Очаквайте скоро</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🖼️</div>
+                <h3>Галерия</h3>
+                <p>Разгледайте богата колекция от исторически снимки и артефакти.</p>
+                <ul class="feature-list">
+                    <li>Исторически фотографии</li>
+                    <li>Археологически находки</li>
+                    <li>Документи и ръкописи</li>
+                    <li>Виртуални обиколки</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📜</div>
+                <h3>Глаголица и Кирилица</h3>
+                <p>Проследете историята на българските азбуки и тяхното развитие.</p>
+                <ul class="feature-list">
+                    <li>История на писмеността</li>
+                    <li>Развитие на азбуките</li>
+                    <li>Старобългарски речник</li>
+                    <li>Палеографски анализ</li>
+                </ul>
+                <div class="coming-soon">Очаквайте скоро</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🗺️</div>
+                <h3>Интерактивна карта</h3>
+                <p>Открийте значимите исторически места в България с нашата интерактивна карта.</p>
+                <ul class="feature-list">
+                    <li>Подробна информация за всяка локация</li>
+                    <li>Филтриране по исторически периоди</li>
+                    <li>Снимки и описания на забележителностите</li>
+                    <li>Маршрути и обиколки</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Нашата мисия</h3>
+                <p>Запознайте се с целите и принципите на нашия проект за съхраняване на българската история.</p>
+                <ul class="feature-list">
+                    <li>Достъпно историческо знание</li>
+                    <li>Обективно представяне</li>
+                    <li>Образователна инициатива</li>
+                    <li>Дигитално съхранение</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📜</div>
+                <h3>Премахнато от историята</h3>
+                <p>Открийте премахнатите и цензурирани страници от българската история през различните политически режими.</p>
+                <ul class="feature-list">
+                    <li>Заличени исторически личности</li>
+                    <li>Цензурирани исторически събития</li>
+                    <li>Премахнати цитати и документи</li>
+                    <li>Възстановена историческа истина</li>
+                </ul>
+                <div class="coming-soon">Очаквайте скоро</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🗳️</div>
+                <h3>Референдуми</h3>
+                <p>Проследете историята на всички референдуми в България и тяхното значение за развитието на страната.</p>
+                <ul class="feature-list">
+                    <li>Хронология на референдумите</li>
+                    <li>Резултати и последствия</li>
+                    <li>Обществени дебати</li>
+                    <li>Исторически контекст</li>
+                </ul>
+                <div class="coming-soon">Очаквайте скоро</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Хронология</h3>
+                <p>Проследете развитието на българската история през вековете.</p>
+                <ul class="feature-list">
+                    <li>Интерактивна времева линия</li>
+                    <li>Филтриране по периоди и типове събития</li>
+                    <li>Подробна информация за всяко събитие</li>
+                    <li>Връзки към допълнителни ресурси</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">❓</div>
+                <h3>Викторина</h3>
+                <p>Проверете и разширете знанията си за българската история.</p>
+                <ul class="feature-list">
+                    <li>Разнообразни въпроси по периоди</li>
+                    <li>Различни нива на трудност</li>
+                    <li>Незабавна обратна връзка</li>
+                    <li>Проследяване на прогреса</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Започнете своето историческо пътешествие</h2>
+            <p>Изберете откъде да започнете вашето пътуване през българската история. Разгледайте интерактивната карта, проследете хронологията на важните събития или проверете знанията си с нашата викторина.</p>
+            <div class="btn-group">
+                <a href="map.html" class="btn">Разгледай картата</a>
+                <a href="timeline.html" class="btn">Виж хронологията</a>
+                <a href="quiz.html" class="btn">Започни викторина</a>
+            </div>
+        </section>
+
+        <section class="donations">
+            <h2>Дарения за нашата мисия</h2>
+            <p>Подкрепете нашата мисия за съхраняване и популяризиране на българската история</p>
+            
+            <div class="donation-cards">
+                <div class="donation-card">
+                    <div class="donation-icon">💳</div>
+                    <h3>Revolut</h3>
+                    <p>Бързо и лесно дарение чрез Revolut</p>
+                    <button class="donate-btn">Дарете с Revolut</button>
+                </div>
+
+                <div class="donation-card">
+                    <div class="donation-icon">🏦</div>
+                    <h3>Банков превод</h3>
+                    <p>Традиционен банков превод</p>
+                    <button class="donate-btn">Банкова информация</button>
+                </div>
+
+                <div class="donation-card">
+                    <div class="donation-icon">📱</div>
+                    <h3>PayPal</h3>
+                    <p>Сигурно дарение чрез PayPal</p>
+                    <button class="donate-btn">Дарете с PayPal</button>
+                </div>
+
+                <div class="donation-card">
+                    <div class="donation-icon">💶</div>
+                    <h3>Stripe</h3>
+                    <p>Бързо онлайн дарение</p>
+                    <button class="donate-btn">Дарете със Stripe</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 БГ История. Всички права запазени. Изработено от <a href="https://pvidev-design.com/" target="_blank">PVidev Design</a></p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html> 

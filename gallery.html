@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Историческа карта на България - Галерия</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-color);
+            transition: var(--transition-normal);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition-normal);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: var(--text-light);
+        }
+
+        .gallery-item-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .gallery-item-description {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .filter-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .filter-container h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius-sm);
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+
+        .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-options {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.svg" alt="Историческа карта на България">
+            </a>
+            <button class="mobile-menu-btn" aria-label="Отвори меню" aria-expanded="false" aria-controls="main-nav">
+                ☰
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="map.html">Карта</a></li>
+                    <li><a href="timeline.html">Хронология</a></li>
+                    <li><a href="gallery.html" class="active">Галерия</a></li>
+                    <li><a href="quiz.html">Викторина</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Галерия с исторически места</h1>
+        
+        <div class="filter-container">
+            <h3>Филтриране по период</h3>
+            <div class="filters">
+                <!-- Тук ще се генерират бутоните за филтриране динамично -->
+            </div>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- Тук ще се генерират елементите на галерията динамично -->
+        </div>
+
+        <!-- Модален прозорец за детайли -->
+        <div id="artifactModal" class="modal">
+            <div id="modalContent" class="modal-content">
+                <!-- Тук ще се показват детайлите за избрания артефакт -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 БГ История. Всички права запазени. Изработено от <a href="https://pvidev-design.com/" target="_blank">PVidev Design</a></p>
+    </footer>
+
+    <script src="gallery.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

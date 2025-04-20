@@ -1,0 +1,547 @@
+/* Основни стилове */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+/* Стилове за контролите на картата */
+.map-controls {
+    margin-bottom: 2rem;
+}
+
+/* Стилове за търсенето */
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 8px 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: var(--secondary-color);
+}
+
+#searchButton {
+    padding: 8px 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#searchButton:hover {
+    background: var(--secondary-color);
+}
+
+/* Стилове за филтри */
+.period-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Стилове за картата */
+#map {
+    height: 600px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+/* Стилове за информацията за мястото */
+.location-info {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-header h2 {
+    color: var(--primary-color);
+    margin: 0 0 1rem 0;
+}
+
+.info-content {
+    color: var(--text-color);
+}
+
+/* Стилове за любимите места */
+.favorites-panel {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.favorites-panel h3 {
+    color: var(--primary-color);
+    margin: 0 0 1rem 0;
+}
+
+#favoritesList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.favorite-item {
+    background: #f8f8f8;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.favorite-item:hover {
+    background: #e8e8e8;
+    transform: translateY(-2px);
+}
+
+.favorite-item h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+}
+
+.favorite-item p {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+/* Стилове за маркерите на картата */
+.custom-marker {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Стилове за popup съдържание */
+.popup-content {
+    max-width: 300px;
+    padding: 10px;
+}
+
+.popup-content h3 {
+    color: var(--primary-color);
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+}
+
+.popup-content .period {
+    color: #666;
+    font-style: italic;
+    margin: 0 0 10px 0;
+}
+
+.popup-content .description {
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+}
+
+.popup-content .events {
+    margin: 15px 0;
+}
+
+.popup-content .event {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 5px;
+}
+
+.popup-content .event .date {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.popup-content .event h5 {
+    margin: 5px 0;
+    color: #333;
+}
+
+.popup-content .images {
+    margin-top: 15px;
+}
+
+.popup-content .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.popup-content .place-image {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.popup-content .place-image:hover {
+    transform: scale(1.05);
+}
+
+/* Стилове за легендата */
+.map-legend {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.map-legend h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.legend-item span {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Стилове за изображения на местата */
+.location-images {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.location-images img {
+    max-width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.location-images img:hover {
+    transform: scale(1.05);
+}
+
+/* Стилове за действия с местата */
+.location-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.share-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.share-btn:hover {
+    background-color: #45a049;
+}
+
+.share-btn i {
+    font-size: 1.1em;
+}
+
+/* Стилове за лентата с периода */
+.period-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    font-size: 0.9em;
+    margin: 10px 0;
+    color: #333;
+}
+
+/* Стилове за списъка със събития */
+.events-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.event-item {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-date {
+    display: block;
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.event-title {
+    color: #333;
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+}
+
+.event-description {
+    color: #666;
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+/* Стилове за действия в popup */
+.popup-actions {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.details-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.details-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Адаптивни стилове */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .period-filters {
+        justify-content: center;
+    }
+    
+    #map {
+        height: 400px;
+    }
+    
+    .popup-content {
+        max-width: 250px;
+    }
+    
+    .legend-items {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .location-images {
+        flex-direction: column;
+    }
+    
+    .location-images img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .location-actions {
+        flex-direction: column;
+    }
+    
+    .share-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .event-item {
+        padding: 10px;
+    }
+    
+    .event-title {
+        font-size: 1em;
+    }
+    
+    .event-description {
+        font-size: 0.9em;
+    }
+}
+
+/* Анимации за преход между периоди */
+@keyframes periodTransition {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.period-transition {
+    animation: periodTransition 0.5s ease-out;
+}
+
+/* Стилове за исторически карти */
+.historical-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.historical-map.active {
+    opacity: 0.9;
+}
+
+/* Стилове за контроли на картите */
+.map-controls {
+    position: relative;
+    z-index: 1000;
+}
+
+.period-map-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.map-control-btn {
+    padding: 8px 15px;
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.map-control-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.map-control-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Стилове за детайлни илюстрации */
+.detailed-illustration {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.detailed-illustration:hover {
+    transform: scale(1.02);
+}
+
+/* Адаптивни стилове за карти и анимации */
+@media (max-width: 768px) {
+    .period-map-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .map-control-btn {
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+    
+    .historical-map {
+        opacity: 0.6;
+    }
+} 

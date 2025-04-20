@@ -1,0 +1,922 @@
+/* Стилове за хедъра и навигацията */
+header {
+    background: linear-gradient(135deg, var(--primary-color), #6b0000);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+}
+
+.main-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-family: 'Noto Serif', serif;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Адаптивен дизайн за навигацията */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.timeline-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.period-filters, .type-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.filter-btn {
+    background: #fff;
+    border: 2px solid #d4af37;
+    color: #8B0000;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: #8B0000;
+    color: #fff;
+    border-color: #8B0000;
+}
+
+.timeline-container {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #d4af37;
+    transform: translateX(-50%);
+}
+
+.timeline-period {
+    margin: 4rem 0;
+    position: relative;
+}
+
+.period-title {
+    text-align: center;
+    color: #8B0000;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    background: #fff;
+    padding: 1rem;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.events-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.event-card {
+    background: #fff;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: calc(50% - 2rem);
+    margin-left: auto;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.event-card:nth-child(even) {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: #d4af37;
+    border-radius: 50%;
+}
+
+.event-card:nth-child(odd)::before {
+    left: -32px;
+    transform: translateY(-50%);
+}
+
+.event-card:nth-child(even)::before {
+    right: -32px;
+    transform: translateY(-50%);
+}
+
+.event-date {
+    color: #8B0000;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.event-card h3 {
+    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.event-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.event-media {
+    margin-top: 1rem;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.event-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Анимации */
+.event-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.event-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Медия заявки */
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 30px;
+    }
+
+    .event-card {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+    }
+
+    .event-card::before {
+        left: -32px !important;
+    }
+
+    .period-title {
+        font-size: 1.5rem;
+        padding: 0.8rem;
+    }
+
+    .filter-btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .period-title {
+        font-size: 1.2rem;
+    }
+
+    .event-date {
+        font-size: 1.2rem;
+    }
+
+    .event-card h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Стилове за търсачката */
+.search-container {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 30px;
+    font-family: 'Noto Serif', serif;
+    font-size: 1rem;
+    width: 300px;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.2);
+}
+
+.sort-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 30px;
+    background: var(--card-bg);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Serif', serif;
+}
+
+.sort-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Стилове за модалния прозорец */
+.event-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    transform: rotate(90deg);
+    color: var(--secondary-color);
+}
+
+.modal-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-content .event-date {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-content .event-type,
+.modal-content .event-period {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(139, 0, 0, 0.1);
+    color: var(--text-color);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.period.animate,
+.event.animate {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивен дизайн */
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .search-input {
+        width: 100%;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+/* Стилове за бутоните за действие */
+.event-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    justify-content: flex-end;
+}
+
+.share-btn,
+.note-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.share-btn:hover,
+.note-btn:hover {
+    background: rgba(139, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+
+/* Стилове за бележките */
+.event-note {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 10px;
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+.note-content {
+    margin-right: 2rem;
+}
+
+.delete-note {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.delete-note:hover {
+    transform: rotate(90deg);
+    color: #ff0000;
+}
+
+/* Стилове за сравнението на периоди */
+.comparison-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.comparison-container {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.period-comparison {
+    flex: 1;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.period-comparison h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.period-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.period-stats p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.compare-btn {
+    display: block;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Noto Serif', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.compare-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: #6b0000;
+}
+
+/* Адаптивен дизайн за сравнението */
+@media (max-width: 768px) {
+    .comparison-container {
+        flex-direction: column;
+    }
+    
+    .period-comparison {
+        width: 100%;
+    }
+    
+    .compare-btn {
+        width: 90%;
+        text-align: center;
+    }
+}
+
+/* Стилове за новите бутони */
+.new-features {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.statistics-btn,
+.map-btn,
+.quiz-btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 30px;
+    background: var(--primary-color);
+    color: white;
+    font-family: 'Noto Serif', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.statistics-btn:hover,
+.map-btn:hover,
+.quiz-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: #6b0000;
+}
+
+/* Стилове за статистиката */
+.statistics-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.stat-card p {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+}
+
+/* Стилове за интерактивната карта */
+.map-container {
+    margin-top: 2rem;
+}
+
+.map-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.map-period-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    background: var(--card-bg);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.map-period-btn:hover,
+.map-period-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.map-view {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.map-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Стилове за теста */
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.question {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.option-btn {
+    padding: 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    background: var(--card-bg);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.option-btn:hover {
+    background: rgba(139, 0, 0, 0.1);
+}
+
+.option-btn.correct {
+    background: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.option-btn.wrong {
+    background: #f44336;
+    color: white;
+    border-color: #f44336;
+}
+
+.quiz-progress {
+    text-align: center;
+    color: var(--text-color);
+    margin-top: 1rem;
+}
+
+.results-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.results-container p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: var(--text-color);
+}
+
+.restart-quiz {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 30px;
+    background: var(--primary-color);
+    color: white;
+    font-family: 'Noto Serif', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.restart-quiz:hover {
+    background: #6b0000;
+    transform: translateY(-3px);
+}
+
+/* Адаптивен дизайн */
+@media (max-width: 768px) {
+    .new-features {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .statistics-btn,
+    .map-btn,
+    .quiz-btn {
+        width: 90%;
+        text-align: center;
+    }
+    
+    .statistics-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .map-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .map-period-btn {
+        width: 90%;
+    }
+    
+    .options {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Стилове за филтрите */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    background: var(--card-bg);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Serif', serif;
+}
+
+.filter-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Стилове за таймлайна */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    border-radius: 3px;
+}
+
+.period {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.period:nth-child(odd) {
+    left: 0;
+}
+
+.period:nth-child(even) {
+    left: 50%;
+}
+
+.period::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -12px;
+    background-color: var(--card-bg);
+    border: 4px solid var(--primary-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.period:nth-child(even)::after {
+    left: -12px;
+}
+
+.period-content {
+    padding: 20px 30px;
+    background: var(--card-bg);
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(139, 0, 0, 0.1);
+}
+
+.period-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.period-title {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.period-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--secondary-color);
+}
+
+.event {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(139, 0, 0, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.event:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-date {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.event-title {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.event-description {
+    color: var(--text-color);
+}
+
+/* Адаптивен дизайн за таймлайна */
+@media (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+
+    .period {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .period:nth-child(even) {
+        left: 0;
+    }
+
+    .period::after {
+        left: 18px;
+    }
+
+    .period:nth-child(even)::after {
+        left: 18px;
+    }
+} 
