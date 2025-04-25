@@ -32,7 +32,7 @@
 
 1. Клонирайте хранилището:
 ```bash
-git clone https://github.com/вашето-потребителско-име/bg-history.git
+git clone https://github.com/pvidev/bg-history.git
 ```
 
 2. Отворете `index.html` във вашия браузър
@@ -56,7 +56,7 @@ git clone https://github.com/вашето-потребителско-име/bg-h
 
 ## Автор
 
-[Вашето име]
+Peyo Videv
 
 ## Благодарности
 
